@@ -1,10 +1,7 @@
-// rever: questao1 tem que ter uma casa decimal apenas
-
 #include <stdio.h>
 
-float coord1, coord2, a, b, c, organizar;
-int inicioJogo, terminoJogo, duracaoJogo, numValores;
-
+float coord1, coord2, a, b, c, valor1, valor2, valor3, mediaPonderada;
+int inicioJogo, terminoJogo, duracaoJogo, numValores, pares, impares, positivos, negativos, quantImpares;
 
 void questao1() {
         
@@ -15,19 +12,19 @@ void questao1() {
     scanf("%f", &coord2);
 
     if ((coord1 == 0.0) && (coord2 == 0.0)) {
-        printf("Origem");
+        printf("Origem\n");
     } else if (coord1 == 0.0) {
-        printf("Eixo Y");
+        printf("Eixo Y\n");
     } else if (coord2 == 0.0) {
-        printf("Eixo X");
+        printf("Eixo X\n");
     } else if ((coord1 < 0.0) && (coord2 < 0.0)) {
-        printf("Q3");
+        printf("Q3\n");
     } else if (coord2 < 0.0) {
-        printf("Q4");
+        printf("Q4\n");
     } else if (coord1 < 0.0) {
-        printf("Q2");
+        printf("Q2\n");
     } else {
-        printf("Q1");
+        printf("Q1\n");
     }
 }
 
@@ -42,6 +39,7 @@ void questao2() {
         scanf("%f", &b);
         scanf("%f", &c);
     }
+    float organizar; 
 
     if (a < b) {
         organizar = a;
@@ -60,7 +58,7 @@ void questao2() {
     }
 
     if (a >= b + c) {
-        printf("Nao forma triangulo.");
+        printf("Nao forma triangulo.\n");
     } else {
         if (a == b && a == c) {
             printf("Triangulo equilatero.\n");
@@ -68,13 +66,13 @@ void questao2() {
             printf("Triangulo isosceles.\n");
         }
         if (a*a == b*b + c*c) {
-            printf("Triangulo retangulo.");
+            printf("Triangulo retangulo.\n");
         }
         if (a*a > b*b + c*c) {
-            printf("Triangulo obtusangulo.");
+            printf("Triangulo obtusangulo.\n");
         }
         if (a*a < b*b + c*c) {
-            printf("Triangulo acutangulo.");
+            printf("Triangulo acutangulo.\n");
         }
     }
     
@@ -97,7 +95,7 @@ void questao3() {
         duracaoJogo = duracaoJogo + terminoJogo;
     }
 
-    printf("O jogo durou %d hora(s).", duracaoJogo);
+    printf("O jogo durou %d hora(s).\n", duracaoJogo);
 }
 
 void questao4() {
@@ -109,12 +107,97 @@ void questao4() {
     for(int i = 0; i < numValores; i++) {
         scanf("%d", &valores[i]);
     }
+
+    for(int i = 0; i < numValores; i++) {
+        if (valores[i] % 2 == 0) {
+            pares++;
+        } else {
+            impares++;
+        }
+        if (valores[i] < 0) {
+            negativos++;
+        } else if (valores[i] != 0) {
+            positivos++;
+        }
+    }
+    printf("%d valor(es) par(es).\n", pares);
+    printf("%d valor(es) impar(es).\n", impares);
+    printf("%d valor(es) positivo(s).\n", positivos);
+    printf("%d valor(es) negativo(s).\n", negativos);
+}
+
+void questao5() {
+    int casosTeste;
+    printf("Quantos casos de teste voce deseja fazer? ");
+    scanf("%d", &casosTeste);
+
+    for (int i = 0; i < casosTeste; i++) {
+        printf("Digite os 3 valores para calcular a %dº média ponderada: \n", i+1);
+        scanf("%f", &valor1);
+        scanf("%f", &valor2);
+        scanf("%f", &valor3);
+        mediaPonderada = ((valor1*2) + (valor2*3) + (valor3*5))/10;
+        printf("\nMedia ponderada entre os três valores acima: %.1f\n\n", mediaPonderada);
+    }
+    
+}
+
+void questao6() {
+    int organizar, x, y;
+    printf("Digite dois números inteiros: \n");
+    scanf("%d", &x);
+    scanf("%d", &y);
+
+    if (x > y) {
+        organizar = x;
+        x = y;
+        y = organizar;
+    }
+
+    for (int i = x+1; i < y; i++) {
+        if (i % 2 != 0) {
+            quantImpares += i;
+        }
+    }
+
+    printf("Somatoria de todos os impares entre os numeros digitados: %d\n", quantImpares);
+}
+
+void questao7() {
+    int casosTeste, x, y, organizar;
+    printf("Quantos casos de teste voce deseja fazer? ");
+    scanf("%d", &casosTeste);
+
+    for (int i = 0; i < casosTeste; i++) {
+        printf("Digite dois números inteiros: \n");
+        scanf("%d", &x);
+        scanf("%d", &y);
+        quantImpares = 0;
+
+        if (x > y) {
+            organizar = x;
+            x = y;
+            y = organizar;
+        }
+
+        for (int i = x+1; i < y; i++) {
+            if (i % 2 != 0) {
+                quantImpares += i;
+            }
+        }
+
+        printf("Somatoria de todos os impares entre os numeros digitados: %d\n\n", quantImpares);
+    }
+
 }
 
 int main() {
 
-    //questao1();
-    //questao2();
-    //questao3();
+    questao1();
+    questao2();
+    questao3();
     questao4();
+    questao5();
+    questao6();
+    questao7();
 }
