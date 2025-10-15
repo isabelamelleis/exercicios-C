@@ -91,4 +91,27 @@ void copia_pares_impares(int v[], int n, int vp[], int vi[]) {
         printf("%d ", vi[i]);
     }
     printf("}");
+
+}
+
+
+void max_lin(int mat[LIN][COL], int vet[COL]) {
+    int i, j, maiorV = mat[0][0], linha = 0;
+    for(i = 0; i < LIN; i++) {
+        for(j = 0; j < COL; j++) {
+            if(mat[i][j] > maiorV) {
+                maiorV = mat[i][j];
+                linha = i;
+            }
+        }
+    }
+    for(i = 0; i < COL; i++) {
+        vet[i] = mat[linha][i];
+    }
+    
+    printf("{");
+    for(i = 0; i < COL; i++) {
+        printf(" %d", vet[i]);
+    }
+    printf("}");
 }
