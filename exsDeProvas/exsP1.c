@@ -115,3 +115,35 @@ void max_lin(int mat[LIN][COL], int vet[COL]) {
     }
     printf("}");
 }
+
+
+int fat_impar(int n) {
+    int i, fat;
+    if((n % 2 == 0) || n < 0) {
+        return 0;
+    } else {
+        fat = n;
+        for(i = n-1; i > 0; i--) {
+            if(i % 2 != 0) {
+                fat *= i; 
+            }
+        }
+        return fat;
+    }
+}
+
+
+void substring(char orig[], char dest[], int ini, int fim) {
+    int i, j, k = 0;
+    for(i = 0; orig[i] != 0; i++);
+    if(ini > i) {
+        dest[0] = '\0';
+        return;
+    }
+    if(fim >= i) {
+        fim = i - 1;
+    }
+    for(j = ini, k = 0; j <= fim; j++, k++) {
+        dest[k] = orig[j];
+    }
+}
